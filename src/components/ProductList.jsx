@@ -7,7 +7,7 @@ function ProductList({ products }) {
         <div className="product-card" key={p.id}>
           <img src={p.image} alt={p.title} />
           <h3>{p.title}</h3>
-          <p>${p.price}</p>
+          <p>Rp {p.price}</p>
           <p className="desc">{p.description.slice(0, 100)}...</p>
         </div>
       ))}
