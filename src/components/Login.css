@@ -1,0 +1,18 @@
+/* Login.css */
+.login-container {
+  display: flex;
+  justify-content: center; /* Memusatkan secara horizontal */
+  align-items: center; /* Memusatkan secara vertikal */
+  height: 100vh; /* Mengatur tinggi kontainer agar memenuhi layar */
+  background-color: #f0f0f0; /* Warna latar belakang (opsional) */
+}
+
+.login-form {
+  background-color: white; /* Warna latar belakang form */
+  padding: 40px; /* Ruang di dalam form */
+  border-radius: 8px; /* Sudut membulat */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan untuk efek kedalaman */
+  text-align: center;
+  width: 400px; /* Menentukan lebar kontainer form */
+  max-width: 90%; /* Memastikan form tidak lebih lebar dari 90% dari layar */
+}

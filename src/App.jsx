@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react';
 import ProductList from './components/ProductList';
+import Login from './components/Login';
 
 function App() {
+  const [token, setToken] = useState(null);
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (token) fetchProducts();
+  }, [token]);
 
   useEffect(() => {
     fetchProducts();
@@ -37,19 +43,26 @@ function App() {
   return (
     <div className="app">
       <header>
-        <h1>Fake Store</h1>
+        <h1>GO Store</h1>
       </header>
+
       <div className="container">
-        <input
-          type="text"
-          placeholder="Cari produk..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button onClick={fetchProducts}>Muat Ulang</button>
-        {loading && <p>Memuat produk...</p>}
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <ProductList products={filtered} />
+        {!token ? (
+          <Login onLogin={setToken} />
+        ) : (
+          <>
+            <input
+              type="text"
+              placeholder="Cari produk..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <button onClick={fetchProducts}>Muat Ulang</button>
+            {loading && <p>Memuat produk...</p>}
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            <ProductList products={filtered} />
+          </>
+        )}
       </div>
     </div>
   );
